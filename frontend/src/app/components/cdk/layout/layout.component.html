@@ -1,0 +1,30 @@
+<ng-container [ngSwitch]="layoutType$ | async">
+    <ng-container *ngSwitchCase="breakpoints.Web">
+        <app-header [customclassName]="'web'" *ngIf="!isAuthOrRegistrationPage"></app-header>
+        <main class="web">
+            <ng-container *ngTemplateOutlet="template"></ng-container>
+        </main>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="breakpoints.Tablet">
+        <app-header [customclassName]="'tablet'" *ngIf="!isAuthOrRegistrationPage"></app-header>
+        <main class="tablet">
+            <ng-container *ngTemplateOutlet="template"></ng-container>
+        </main>
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+        <app-header [customclassName]="'handset'" *ngIf="!isAuthOrRegistrationPage"></app-header>
+        <main class="handset">
+            <ng-container *ngTemplateOutlet="template"></ng-container>
+        </main>
+    </ng-container>
+</ng-container>
+
+
+
+<ng-template #template>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+</ng-template>

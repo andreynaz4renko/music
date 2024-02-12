@@ -1,0 +1,100 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/no-inferrable-types": 0,
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "never",
+        "prev": "*",
+        "next": "import"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "block"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "block-like"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "if"
+      },
+      {
+        "blankLine": "always",
+        "prev": "multiline-block-like",
+        "next": "case"
+      },
+      // {
+      //   "blankLine": "always",
+      //   "prev": "*",
+      //   "next": "case"
+      // },
+      {
+        "blankLine": "never",
+        "prev": "*",
+        "next": "class"
+      },
+      {
+        "blankLine": "always",
+        "prev": "multiline-expression",
+        "next": "*"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "function"
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 100
+      }
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "no-duplicate-case": "error",
+    "semi": "error",
+    "no-extra-semi": "error",
+    "capitalized-comments": [
+      "error",
+      "always",
+      {
+        "ignorePattern": "pragma|ignored",
+        "ignoreInlineComments": true
+      }
+    ],
+    "no-magic-numbers": [
+      "warn",
+      {
+        "ignore": [
+          -1,
+          0,
+          1
+        ]
+      }
+    ],
+    "no-nested-ternary": "error",
+    "no-useless-return": "warn",
+    "no-multiple-empty-lines": "error",
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ]
+  }
+}

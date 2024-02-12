@@ -1,0 +1,64 @@
+.results {
+  margin-top: 20px;
+
+  &__title {
+    font-size: 18px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    &_title {
+      font-size: 18px;
+    }
+
+    &-remove {
+      position: absolute;
+      top: 2px;
+      right: 0;
+      height: 14px;
+      width: 14px;
+      z-index: 2;
+      cursor: pointer;
+
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 14px;
+        width: 2px;
+        background: #BDBDBD;
+      }
+
+      &:before {
+        transform: translate(-50%, -50%) rotate(45deg) !important;
+      }
+
+      &:after {
+        transform: translate(-50%, -50%) rotate(-45deg) !important;
+      }
+    }
+  }
+}
+
+.add-section__title {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.add-section__list {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  &-item {
+    width: min-content;
+    padding-right: 30px;
+    position: relative;
+  }
+}

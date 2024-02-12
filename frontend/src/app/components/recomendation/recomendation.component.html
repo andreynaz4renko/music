@@ -1,0 +1,21 @@
+<div class="container">
+    <app-file-uploader *ngIf="!file" [formControl]="fileInput"></app-file-uploader>
+    <div class="add-section__title" *ngIf="file">
+        Your file:
+    </div>
+    <div class="add-section__list" *ngIf="file">
+        <div class="add-section__list-item">
+            {{file?.name}}
+            <div class="results__list-remove" (click)="deleteFile()">
+            </div>
+        </div>
+        <audio controls [src]="fileLink"></audio>
+    </div>
+    <div class="results">
+        <p class="results__title">Results</p>
+        <div class="results__list" *ngFor="let item of results">
+            <p class="results__list_title">{{item.title}}</p>
+            <audio controls [src]="'http://localhost:4200/'+item.url"></audio>
+        </div>
+    </div>
+</div>

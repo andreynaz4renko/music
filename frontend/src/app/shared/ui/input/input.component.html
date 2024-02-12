@@ -1,0 +1,5 @@
+<ng-container *ngIf="type=='file'">
+    <span class="input-file-text" type="text"></span>
+</ng-container>
+<input [type]='type' [accept]='accept' [placeholder]="placeholder" [formControl]="inputControl"
+    [ngClass]="{'input_file':type == 'file', 'input':type !='file'}">

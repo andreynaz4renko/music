@@ -1,0 +1,16 @@
+<ng-container [formGroup]="form">
+    <div class="registration-form">
+        <p class="registration-form__title">Register</p>
+        <app-input type='text' placeholder="Enter username" formControlName="username"></app-input>
+        <app-input type='email' placeholder="Enter email" formControlName="email"></app-input>
+        <app-input type='password' placeholder="Enter password" formControlName="password"></app-input>
+
+        <div class="registration-form__btn">
+            <app-button text="Sing Up" (btnClick)="Submit()"></app-button>
+        </div>
+
+        <div class="registration-form__login">
+            <a href="" routerLink="/login">Login <img src="../../../assets/images/right-arrow.svg" alt=""></a>
+        </div>
+    </div>
+</ng-container>

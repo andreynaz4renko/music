@@ -1,0 +1,22 @@
+@use '@angular/material' as mat;
+
+.input {
+  background-color: inherit;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #BDBDBD;
+  width: 100%; // color: accent;
+  caret-color: #EEEEEE;
+  color: #EEEEEE;
+
+  &::placeholder {
+    color: #BDBDBD;
+  }
+
+  &:hover {
+    color: #EEEEEE;
+    border: 2px solid #EEEEEE;
+  }
+
+}

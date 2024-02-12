@@ -1,0 +1,13 @@
+keras
+scikit-learn
+pillow
+librosa
+opencv-python
+pandas
+eyed3
+django
+djangorestframework
+PyJWT
+django-cors-headers
+matplotlib
+tensorflow
