@@ -153,6 +153,10 @@ CORS_ALLOW_METHODS = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://2276-146-0-78-187.ngrok-free.app",
+    "http://localhhost",
+    "http://localhhost:8000",
+    "http://localhhost:4200",
+    "http://localhhost:80",
     # Add any other allowed origins as needed
 ]
 

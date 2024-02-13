@@ -2,7 +2,7 @@ from .models import Item
 from django.http import FileResponse
 from rest_framework import permissions
 
-from serializers import ItemSerializer
+from .serializers import ItemSerializer
 from rest_framework.generics import RetrieveUpdateAPIView
 from neural_network import model_weights
 from django.core.files.storage import default_storage
