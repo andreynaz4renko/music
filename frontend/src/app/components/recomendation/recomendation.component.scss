@@ -8,10 +8,20 @@
   &__list {
     display: flex;
     gap: 20px;
-    align-items: center;
+    flex-direction: column;
+
+    &_item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
 
     &_title {
       font-size: 18px;
+    }
+
+    &_probability {
+      font-size: 14px;
     }
 
     &-remove {

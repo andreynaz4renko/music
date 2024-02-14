@@ -1,3 +1,5 @@
+import json
+
 from .models import Item
 from django.http import FileResponse
 from rest_framework import permissions
@@ -43,13 +45,20 @@ class ItemViewSet(CreateAPIView):
         file = self.request.FILES['file']
         file_name = default_storage.save(file.name, file)
         res = self.neural_controller.predict(file_name)
-        base = 'F:\\programming\\projects\\temp\\gordeev\\MusicRecomendation\\backend\\neural\\Dataset\\tracks\\'
-        result_track = base + res[0][0] + '.mp3'  # song name
-        print("result_track = ", result_track)
 
-        with open(result_track, 'rb') as f:
-            file_data = base64.b64encode(f.read()).decode('utf-8')
-        
-        response_data = {'file_data': file_data}
-        return Response(response_data, status=status.HTTP_200_OK)
-        #return Response({'name': res[0][0] + '.mp3', 'url': file_data})
+        base = '/app/neural/Dataset/tracks/'
+
+        response = []
+        best_files = res[:5]
+        for best_file in best_files:
+            filename, probability = best_file
+            filepath = f"{base}{filename}.mp3"
+            with open(filepath, 'rb') as f:
+                filedata = base64.b64encode(f.read()).decode('utf-8')
+                response.append({
+                    "name": filename,
+                    "probability": probability,
+                    "filedata": filedata
+                })
+
+        return Response(response, status=status.HTTP_200_OK)

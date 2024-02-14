@@ -1,16 +1,52 @@
 version: "3.8"
 
 services:
+  traefik:
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - recom
+    image: traefik
+    command:
+      # - "--log.level=INFO"
+      - "--accesslog"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`12b6-5-165-136-123.ngrok-free.app`)"
+
   frontend:
+    networks:
+      - recom
     ports:
       - "4200:80"
     build:
       context: ./frontend
       dockerfile: ./Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`12b6-5-165-136-123.ngrok-free.app`)"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+
   backend:
-    ports:
-      - "80:80"
-      - "8000:8000"
+    networks:
+      - recom
     build:
       context: ./backend
       dockerfile: ./Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=Host(`12b6-5-165-136-123.ngrok-free.app`) && PathPrefix(`/api`)"
+      - "traefik.http.services.backend.loadbalancer.server.port=8000"
+
+networks:
+  recom:

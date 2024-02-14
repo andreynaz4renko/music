@@ -8,7 +8,7 @@ app_name = 'neural'
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('recomendation/', ItemViewSet.as_view()),
+    path('recomendation', ItemViewSet.as_view()),
 ]
 
 urlpatterns += router.urls
